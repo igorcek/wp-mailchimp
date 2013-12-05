@@ -229,7 +229,19 @@ function mailchimpSF_signup_form($args = array()) {
 		        </ul>
 			</div>
 		</div>	
+		<?php
+		}
 
+		$privacy_text = get_option('mc_submit_text');
+		if (!$privacy_text && MAILCHIMP_DEV_MODE == true) {
+			$privacy_text = apply_filters( 'mailchimp_dev_mode_privacy_text', 'Acconsento al trattamento dei dati secondo la privacy policy.' );
+		}
+
+		?>		
+		<div class="privacybox">
+			<input class="privacy" type="checkbox" required="" name="privacy" value="">
+			<label><?php echo esc_attr($privacy_text); ?></label>
+		</div>
 		<?php
 		}
 
