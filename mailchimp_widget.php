@@ -232,7 +232,7 @@ function mailchimpSF_signup_form($args = array()) {
 		<?php
 		
 
-		$privacy_text = get_option('mc_submit_text');
+		$privacy_text = get_option('mc_privacy_text');
 		if (!$privacy_text && MAILCHIMP_DEV_MODE == true) {
 			$privacy_text = apply_filters( 'mailchimp_dev_mode_privacy_text', 'Acconsento al trattamento dei dati secondo la privacy policy.' );
 		}
