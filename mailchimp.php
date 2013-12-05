@@ -521,6 +521,7 @@ function mailchimpSF_reset_list_settings() {
 
 	delete_option('mc_header_content');
 	delete_option('mc_subheader_content');
+	delete_option('mc_privacy_text');
 	delete_option('mc_submit_text');
 
 	delete_option('mc_custom_style');
@@ -640,6 +641,10 @@ function mailchimpSF_save_general_form_settings() {
 		update_option('mc_subheader_content', $content );
 
 
+		$privacy_text = stripslashes($_POST['mc_privacy_text']);
+		$privacy_text = str_replace("\r\n","", $privacy_text);
+		update_option('mc_privacy_text', $privacy_text);
+		
 		$submit_text = stripslashes($_POST['mc_submit_text']);
 		$submit_text = str_replace("\r\n","", $submit_text);
 		update_option('mc_submit_text', $submit_text);
@@ -977,6 +982,13 @@ if (get_option('mc_list_id') == '' && MAILCHIMP_DEV_MODE == false) return;
 		</td>
 	</tr>
 
+	<tr valign="top" class="last-row">
+		<th scope="row"><?php esc_html_e('Privacy text', 'mailchimp_i18n'); ?></th>
+		<td>
+		<input type="text" name="mc_privacy_text" size="70" value="<?php echo esc_attr(get_option('mc_privacy_text')); ?>"/>
+		</td>
+	</tr>
+	
 	<tr valign="top" class="last-row">
 	<th scope="row"><?php esc_html_e('Submit Button', 'mailchimp_i18n'); ?></th>
 	<td>
