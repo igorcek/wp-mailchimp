@@ -230,7 +230,7 @@ function mailchimpSF_signup_form($args = array()) {
 			</div>
 		</div>	
 		<?php
-		}
+		
 
 		$privacy_text = get_option('mc_submit_text');
 		if (!$privacy_text && MAILCHIMP_DEV_MODE == true) {
